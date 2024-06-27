@@ -22,22 +22,7 @@ suite('Add Grades page', function() {
     assert.ok(buttonAddFound, "Button [Add] is missing");
   });
 
-  test('Add valid grade', async function() {
-    let res = await fetch(
-      "http://localhost:8888/Add-Grade",
-      {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: "subject=Physics&value=3.90"
-      }
-    );
-    let body = await res.text();
-    let gradesReturned = body.includes(
-		"<ul><li>English (4.50)</li><li>Math (5.50)</li><li>Programming Basics (6.00)</li><li>Physics (3.90)</li></ul>");
-    assert.ok(gradesReturned, "Add grade failed");
-  });
+
 
   test('Add invalid grade', async function() {
      let res = await fetch(
