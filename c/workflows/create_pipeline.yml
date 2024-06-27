@@ -49,4 +49,16 @@ jobs:
       run: npx playwright install
     - name: Run UI tests
       run: npm run test:ui
+
+
+
+  deploy:
+    needs: execute-ui-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_KEY_APY }}
   
